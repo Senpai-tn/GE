@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GE</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/landing.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/split.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="https://www.creative-tim.com">
+                <img src="assets/img/log.gif" height="60px">
+            </a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                        Accueil
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        GE Lighting
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                        Ge Solar
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
+                        Nos références
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
+                        Blog
+                    </a>
+                </li>
+
+                <li class="nav-item" *ngIf="isHome()">
+                    <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="page-header"  style="background-image: url('./assets/img/bg_landing.png');margin-top: -10%">
+    <div class="filter"></div>
+    <div class="container" style="margin-top:20%;z-index:99999999999">
+        <div class="row">
+            <div class="col-5">
+                <img src="assets/img/logo.png">
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6 cadre-header" style="height: 60vh;padding: 0px;width: 50%">
+                    <video playsinline="playsinline"  autoplay="autoplay"  style="margin:0;height: 100%;width: 100%" muted="muted" loop="loop">
+                        <source src="assets/img/bg-video.mp4" type="video/mp4">
+                    </video>
+
+
+
+            </div>
+        </div>
+        <!-- <div class="motto text-center">
+            <h1>Example page</h1>
+            <h3>Start designing your landing page here.</h3>
+            <br />
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i
+                    class="fa fa-play"></i>Watch video</a>
+            <button type="button" class="btn btn-outline-neutral btn-round">Download</button>
+        </div> -->
+    </div>
+</div>
+<style>
+
+    .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+    .split {
+        width:100%;
+        height:100%;
+        padding: 30px;
+        border: 1px solid;
+    }
+    .a {
+        background: url('assets/img/about_1.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        z-index: 50;
+        min-width: 15%;
+    }
+    .b {
+
+        background: url('assets/img/about_2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-width: 15%;
+    }
+    .gutter {
+        cursor: e-resize;
+        height: 100%;
+        background: grey;
+    }
+    .btn_a
+    {
+        color: white;
+        position: absolute;
+        top: 10%;
+        right: 25%;
+        z-index: -100;
+        height: 50px;
+        width: 200px;
+    }
+    .btn_b
+    {
+        color: white;
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        z-index: -100;
+        height: 50px;
+        width: 200px;
+    }
+</style>
+<div class="main">
+    <!-- about us section -->
+    <div class="section text-center">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title" id="about">About <span class="text-bluec">Us</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="content">
+                    <div id="splitlayout" class="splitlayout">
+                        <div class="intro">
+                            <div class="side side-left">
+                                <div class="bg" style="background-image:url('assets/img/about_1.png');z-index: -5; width: 100%; ">
+                                    <div class="intro-content">
+                                        <div class="profile"><img src="assets/img/logo.png" style="width: 100%;
+    height: auto;
+    min-width: 20%;
+    position: absolute;
+    left: -12%;" alt="profile1"></div>
+                                        <!-- <br><br>
+                                        <h1><span>AAAA </span><span>AAAAA</span></h1> -->
+                                    </div>
+                                    <div class="overlay"></div>
+                                </div>
+                            </div>
+
+                            <div class="side side-right">
+                                <div class="intro-content">
+                                    <div class="profile">
+                                        <img src="assets/img/GE-SOLAR-ENERGY.png" style="width: 100%;
+    height: auto;
+    min-width: 20%;
+    position: absolute;
+    left: -12%;" alt="profile2">
+                                    </div>
+                                    <!-- <br><br>
+                                    <h1><span>AAAAA</span><span>AAAAA</span></h1> -->
+                                </div>
+                                <div class="overlay"></div>
+                            </div>
+                        </div><!-- /intro -->
+                        <div class="page page-right">
+                            <div class="page-inner">
+                                <section>
+                                    <img src="assets/img/about_2.png" class="image-inner">
+                                </section>
+                            </div><!-- /page-inner -->
+                        </div><!-- /page-right -->
+                        <div class="page page-left">
+                            <div class="page-inner">
+                                <section>
+                                    <img src="assets/img/about_1.png" class="image-inner">
+                                </section>
+                            </div><!-- /page-inner -->
+                        </div><!-- /page-left -->
+                        <a href="#about" class="back back-right" title="back to intro">&rarr;</a>
+                        <a href="#about" class="back back-left" title="back to intro">&larr;</a>
+                    </div><!-- /splitlayout -->
+                </div><!-- /container -->
+            </div>
+        </div>
+    </div>
+
+    <!-- GE MILESTONES section -->
+    <div class="section text-center" style="margin-top: 500px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title" id="milestones">GE <span class="text-bluec">MILESTONES</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <img src="assets/img/milestone.png" style="width: 100%;object-fit: cover;" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Nos activités principeaux section -->
+    <div class="section  text-center" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title" id="activities">Nos activités <span class="text-bluec">principeaux</span></h2>
+                </div>
+            </div>
+            <div class="row"  style="margin-top: 60px">
+                <div class="col-md-3 cardI" style="">
+                    <span class="icon-img"><i class="fa fa-heart"></i></span>
+                    <img src="assets/img/Sous_traitance_industrielle.jpg" alt="" class="img-card">
+
+                    <img src="assets/img/lamp.png" alt="" class="mask">
+                    <p class="cardT">Recherches et Développements</p>
+
+                </div>
+
+                <div class="col-md-3 cardI" style="">
+                    <span class="icon-img"><i class="fa fa-heart"></i></span>
+                    <img src="assets/img/Assemblage_et_industrialisation.jpg" alt="" class="img-card">
+                    <img src="assets/img/lamp.png" alt="" class="mask">
+                    <p class="cardT">Assemblage et industrialisation</p>
+                </div>
+
+                <div class="col-md-3 cardI" style="">
+                    <span class="icon-img"><i class="fa fa-heart"></i></span>
+                    <img src="assets/img/Etude.jpg" alt="" class="img-card">
+                    <img src="assets/img/lamp.png" alt="" class="mask">
+                    <p class="cardT">Etude, fournitures et Pose </p>
+                </div>
+
+                <div class="col-md-3 cardI" style="">
+                    <span class="icon-img"><i class="fa fa-heart"></i></span>
+                    <img src="assets/img/recherche.jpg" alt="" class="img-card">
+                    <img src="assets/img/lamp.png" alt="" class="mask">
+                    <p class="cardT">Recherches et Développements</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOS Gammes section -->
+    <div class="section  text-center" style="margin-top: 50px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title" id="gammes">Nos <span class="text-bluec">Gammes</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nos catalogue section -->
+    <div class="section text-center" style="background:#f3f3f3;">
+        <div class="container">
+            <h2 class="title title-cata">NOS <span class="text-bluec">CATALOGUES</span></h2>
+            <div class="row justify-content-center align-items-center mt-5" style="    background: #bce0fd;">
+                <div class="col-4" style="margin-right: 15% !important;">
+                    <img src="assets/img/catalogue_2.png">
+                </div>
+                <div class="absolute-catalogue">
+                    <img src="assets/img/catalogue_1.png">
+                </div>
+                <div class="col-4" style="margin-left: 15% !important;">
+                    <img src="assets/img/catalogue_3.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nos precieux clients section -->
+    <div class="section text-center" style="background:#f3f3f3;">
+        <div class="container">
+            <h2 class="title title-client">NOS PRECIEUX <span
+                    style="color:#83a134">CLIENTS</span></h2>
+            <div class="row justify-content-center align-items-center mt-5">
+                <div class="col-3">
+                    <img src="assets/img/partner_1.png">
+                </div>
+                <div class="col-3">
+                    <img src="assets/img/partner_2.png">
+                </div>
+                <div class="col-3">
+                    <img src="assets/img/partner_3.png">
+                </div>
+                <div class="col-3">
+                    <img src="assets/img/partner_4.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- A la une section -->
+    <div class="section text-center" style="background:#f3f3f3;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="title" id="news">A la <span class="text-bluec">UNE</span></h2>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center mt-5">
+                <div class="col-6">
+                    <img src="assets/img/daniel-olahh.jpg" width="100%">
+                    <h3 class="text-white text-left absolute-blog">lorem ipsum 09-09-2020</h3>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="blog-img-left" src="assets/img/daniel-olahs.jpg">
+                        </div>
+                        <div class="col-9">
+                            <h5 class="text-black text-left">lorem ipsum 09-09-2020</h5>
+                            <p class="text-justify">lorem ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="blog-img-left" src="assets/img/fabio-mangione.jpg">
+                        </div>
+                        <div class="col-9">
+                            <h5 class="text-black text-left">lorem ipsum 09-09-2020</h5>
+                            <p class="text-justify">lorem ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="blog-img-left" src="assets/img/joshua-stannard.jpg">
+                        </div>
+                        <div class="col-9">
+                            <h5 class="text-black text-left">lorem ipsum 09-09-2020</h5>
+                            <p class="text-justify">lorem ipsum is simply dummy text of the printing</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram section -->
+    <section class="section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 mr-auto ml-auto text-center">
+                    <h2 class="title"><span class="fa fa-instagram text-black"></span><span class="text-bluec ml-4">INSTAGRAM</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url('assets/img/gallery-1.jpg');">
+                        <a href="assets/img/gallery-1.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Cat</span>
+                                <h2><a href="work-single.html">Persian Cat</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url('assets/img/gallery-2.jpg');">
+                        <a href="assets/img/gallery-2.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Dog</span>
+                                <h2><a href="work-single.html">Pomeranian</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url('assets/img/gallery-3.jpg');">
+                        <a href="assets/img/gallery-3.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Cat</span>
+                                <h2><a href="work-single.html">Sphynx Cat</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url('assets/img/gallery-4.jpg');">
+                        <a href="assets/img/gallery-4.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Cat</span>
+                                <h2><a href="work-single.html">British Shorthair</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url('assets/img/gallery-5.jpg');">
+                        <a href="assets/img/gallery-5.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Dog</span>
+                                <h2><a href="work-single.html">Beagle</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url(assets/img/gallery-6.jpg);">
+                        <a href="assets/img/gallery-6.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Dog</span>
+                                <h2><a href="work-single.html">Pug</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 ftco-animate">
+                    <div class="work mb-4 img d-flex align-items-end"
+                         style="background-image: url(assets/img/gallery-7.jpg);">
+                        <a href="assets/img/gallery-7.jpg"
+                           class="icon image-popup d-flex justify-content-center align-items-center">
+                            <span class="fa fa-expand"></span>
+                        </a>
+                        <div class="desc w-100 px-4">
+                            <div class="text w-100 mb-3">
+                                <span>Cat</span>
+                                <h2><a href="work-single.html">British Shorthair</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <div class="section landing-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto">
+                    <h2 class="text-center">Keep in touch?</h2>
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Name" (focus)="focus=true"
+                                           (blur)="focus=false">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="nc-icon nc-email-85"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true"
+                                           (blur)="focus1=false">
+                                </div>
+                            </div>
+                        </div>
+                        <label>Message</label>
+                        <textarea class="form-control" rows="4"
+                                  placeholder="Tell us your thoughts and feelings..."></textarea>
+                        <div class="row">
+                            <div class="col-md-4 mr-auto ml-auto">
+                                <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--   Core JS Files   -->
+<script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="assets/js/plugins/bootstrap-switch.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="assets/js/plugins/moment.min.js"></script>
+<script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+<script>
+    Split(['.a', '.b'], {
+        gutterSize: 15,
+        sizes: [50,50]
+    });
+
+    elem = $("#a")[0];
+
+    let resizeObserver = new ResizeObserver(() => {
+        if($("#a").width()> window.innerWidth*0.7)
+            $("#btn_a").css("z-index", "100");
+        else
+            $("#btn_a").css("z-index", "-100");
+    });
+
+    resizeObserver.observe(elem);
+
+    elemB = $("#b")[0];
+    let resizeObserverB = new ResizeObserver(() => {
+
+        if($("#b").width() > window.innerWidth*0.7)
+            $("#btn_b").css("z-index", "100");
+        else
+            $("#btn_b").css("z-index", "-100");
+        console.log($("#b").width());
+    });
+    resizeObserverB.observe(elemB);
+
+</script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".side-left .intro-content").click(function(){
+            $(".splitlayout").addClass("open-left");
+            $(".splitlayout").removeClass("close-right reset-layout");
+        });
+
+        $(".back-right").click(function(){
+            $(".splitlayout").removeClass("open-left");
+            $(".splitlayout").addClass("close-left reset-layout");
+        });
+
+        $(".side-right .intro-content").click(function(){
+            $(".splitlayout").addClass("open-right");
+            $(".splitlayout").removeClass("close-left reset-layout");
+        });
+
+        $(".back-left").click(function(){
+            $(".splitlayout").removeClass("open-right");
+            $(".splitlayout").addClass("close-right reset-layout");
+        });
+    });
+</script>
+</body>
+</html>
